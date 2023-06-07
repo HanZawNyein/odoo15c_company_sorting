@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="company_sorting.SwitchCompanyMenu" t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown//t[@t-foreach='Object.values(companyService.availableCompanies).sort((c1, c2) => c1.sequence - c2.sequence)']"
+               position="replace">
+            <t t-foreach="Object.values(companyService.availableCompanies).sort((c1, c2) => c1.name.localeCompare(c2.name))" t-as="company">
+                <t t-call="web.SwitchCompanyItem">
+                    <t t-set="company" t-value="company"/>
+                </t>
+            </t>
+        </xpath>
+    </t>
+</templates>
